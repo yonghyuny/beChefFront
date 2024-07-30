@@ -1,12 +1,11 @@
 import { Kit } from "../admin/atom/Kit/Kit";
 
 const DOMAIN = `http://localhost:8080`; // test용 url
-const SERVER_URL = `https://bechef-mealkit.azurewebsites.net`; // 배포 url
-const API_URL = `${DOMAIN}/api`;
-const ADMIN_URL = `${DOMAIN}/api/admin`;
-const INFO_URL = `${DOMAIN}/api/info`;
-const MEMBER_URL = `${DOMAIN}/bechef/member`;
-
+const SERVER_URL = `https://bechefback-bda4fddea6hxcpda.koreacentral-01.azurewebsites.net`; // 배포 url
+const API_URL = `${SERVER_URL}/api`;
+const ADMIN_URL = `${SERVER_URL}/api/admin`;
+const INFO_URL = `${SERVER_URL}/api/info`;
+const MEMBER_URL = `${SERVER_URL}/bechef/member`;
 
 // ADMIN 페이지
 export const ADMIN_UPDATE_QUANTITY = (kit: Kit) =>
@@ -49,7 +48,7 @@ export const MAP_MODAL_REVIEW = (idx: Number) =>
   `${API_URL}/reviews?memberIdx=${idx}`;
 export const MAP_DELETE_ACCOUNT = () => `${MEMBER_URL}`;
 export const MAP_SEARCH = (query: string) =>
-  `${DOMAIN}/bechef/search?query=${query}`;
+  `${SERVER_URL}/bechef/search?query=${query}`;
 
 // 로그인 회원가입 페이지
 export const LOGIN_POST = () => `${MEMBER_URL}/login`;
