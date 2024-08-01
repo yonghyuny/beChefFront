@@ -7,6 +7,10 @@ const ADMIN_URL = `${SERVER_URL}/api/admin`;
 const INFO_URL = `${SERVER_URL}/api/info`;
 const MEMBER_URL = `${SERVER_URL}/bechef/member`;
 
+// map 페이지 검색 결과 
+export const MAP_SEARCH = (query: string) =>
+  `${SERVER_URL}/bechef/search?query=${query}`;
+
 // ADMIN 페이지
 export const ADMIN_UPDATE_QUANTITY = (kit: Kit) =>
   `${ADMIN_URL}/inventory/${kit.store_id}/${kit.menu_id}`;
@@ -47,8 +51,7 @@ export const MAP_MODAL_FAVORITE = (idx: Number) =>
 export const MAP_MODAL_REVIEW = (idx: Number) =>
   `${API_URL}/reviews?memberIdx=${idx}`;
 export const MAP_DELETE_ACCOUNT = () => `${MEMBER_URL}`;
-export const MAP_SEARCH = (query: string) =>
-  `${SERVER_URL}/bechef/search?query=${query}`;
+
 
 // 로그인 회원가입 페이지
 export const LOGIN_POST = () => `${MEMBER_URL}/login`;

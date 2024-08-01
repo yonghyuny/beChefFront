@@ -69,27 +69,31 @@ const KitItem: React.FC<KitItemProps> = ({ kit, onUpdate }) => {
   const formatPrice = (menu_price: number) => Math.floor(menu_price);
 
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl">
+    <div className="flex flex-col justify-between h-112 bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl">
       <img
         src={kit.menu_image_url}
         alt={kit.menu_name}
         className="w-full h-48 object-cover"
       />
-      <KitInfo
-        name={kit.menu_name}
-        description={kit.menu_description}
-        price={formatPrice(kit.menu_price)}
-        quantity={kit.quantity}
-      />
-      <div className="p-4 bg-gray-50">
-        <div className="mb-2 text-center font-bold">
-          가격: {formatPrice(kit.menu_price)}원
-        </div>
-        <div className="mb-2 text-center font-bold">
-          현재 수량: {kit.quantity}
+      <div className="p-4 flex-1 flex flex-col justify-between">
+        <div>
+          <KitInfo
+            name={kit.menu_name}
+            description={kit.menu_description}
+            price={formatPrice(kit.menu_price)}
+            quantity={kit.quantity}
+          />
+          <div className="mt-4">
+            <div className="mb-2 text-center font-bold">
+              가격: {formatPrice(kit.menu_price)}원
+            </div>
+            <div className="mb-2 text-center font-bold">
+              현재 수량: {kit.quantity}
+            </div>
+          </div>
         </div>
         {isAdmin && (
-          <>
+          <div>
             <input
               type="number"
               value={inputQuantity}
@@ -103,7 +107,7 @@ const KitItem: React.FC<KitItemProps> = ({ kit, onUpdate }) => {
             >
               {isUpdating ? "업데이트 중..." : "수량 업데이트"}
             </button>
-          </>
+          </div>
         )}
       </div>
     </div>

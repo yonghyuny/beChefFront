@@ -25,7 +25,7 @@ const SignUpForm: React.FC = () => {
   const [confirmPwd, setConfirmPwd] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [address, setAdress] = useState("");
+  const [address, setAdress] = useState("");   // -> 이거 리팩토링 어케하지
 
   // 각 필드의 에러 메시지를 관리하는 상태
   const [errors, setErrors] = useState({
