@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import axios from "axios";
 import HeaderSection from "../../molecules/HeaderSection/HeaderSection";
 import SearchSection from "../../molecules/SearchSection/SearchSection";
@@ -15,6 +15,7 @@ const Search = ({ setResults, onMarkerHover }: SearchProps) => {
   const [query, setQuery] = useState("");
   const [results, setResultsState] = useState<Store[]>([]);
   const [sortOption, setSortOption] = useState<string>("");
+  const resultsContainerRef = useRef<HTMLUListElement>(null);
 
   const handleSearch = async () => {
     try {
@@ -40,7 +41,13 @@ const Search = ({ setResults, onMarkerHover }: SearchProps) => {
       sortedResults.sort((a, b) => b.store_rating - a.store_rating);
     }
     setResultsState(sortedResults);
+
+    if (resultsContainerRef.current) {
+      resultsContainerRef.current.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
+
+  
 
   return (
     <div className="bg-npLG w-px415 flex flex-col h-full">

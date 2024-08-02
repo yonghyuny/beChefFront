@@ -11,7 +11,9 @@ type KitItemProps = {
 };
 
 const KitItem: React.FC<KitItemProps> = ({ kit, onUpdate }) => {
-  const [inputQuantity, setInputQuantity] = useState(kit.quantity);
+  const [inputQuantity, setInputQuantity] = useState<number | string>(
+    kit.quantity
+  );
   const [isUpdating, setIsUpdating] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
 
@@ -29,8 +31,7 @@ const KitItem: React.FC<KitItemProps> = ({ kit, onUpdate }) => {
   }, []);
 
   const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newQuantity = parseInt(e.target.value, 10);
-    setInputQuantity(isNaN(newQuantity) ? 0 : newQuantity);
+    setInputQuantity(e.target.value);
   };
 
   const handleUpdateQuantity = async () => {
@@ -39,14 +40,33 @@ const KitItem: React.FC<KitItemProps> = ({ kit, onUpdate }) => {
       return;
     }
 
+    if (inputQuantity === "" || inputQuantity === null) {
+      alert("수량을 입력해주세요.");
+      return;
+    }
+
+    const newQuantity = parseInt(inputQuantity.toString(), 10);
+
+    if (isNaN(newQuantity)) {
+      alert("유효한 숫자를 입력해주세요.");
+      return;
+    }
+
+    if (newQuantity < 0) {
+      alert("0 이상의 수량을 입력해주세요.");
+      return;
+    }
+
     try {
       setIsUpdating(true);
       const token = localStorage.getItem("jwt-token");
+      if (!token) {
+        throw new Error("토큰이 없습니다.");
+      }
       const response = await axios.put(
-        //`http://localhost:8080/api/admin/inventory/${kit.store_id}/${kit.menu_id}`
         ADMIN_UPDATE_QUANTITY(kit),
         {
-          quantity: inputQuantity,
+          quantity: newQuantity,
         },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -69,35 +89,32 @@ const KitItem: React.FC<KitItemProps> = ({ kit, onUpdate }) => {
   const formatPrice = (menu_price: number) => Math.floor(menu_price);
 
   return (
-    <div className="flex flex-col justify-between h-112 bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl">
+    <div className="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl">
       <img
         src={kit.menu_image_url}
         alt={kit.menu_name}
         className="w-full h-48 object-cover"
       />
-      <div className="p-4 flex-1 flex flex-col justify-between">
-        <div>
-          <KitInfo
-            name={kit.menu_name}
-            description={kit.menu_description}
-            price={formatPrice(kit.menu_price)}
-            quantity={kit.quantity}
-          />
-          <div className="mt-4">
-            <div className="mb-2 text-center font-bold">
-              가격: {formatPrice(kit.menu_price)}원
-            </div>
-            <div className="mb-2 text-center font-bold">
-              현재 수량: {kit.quantity}
-            </div>
-          </div>
+      <KitInfo
+        name={kit.menu_name}
+        description={kit.menu_description}
+        price={formatPrice(kit.menu_price)}
+        quantity={kit.quantity}
+      />
+      <div className="p-4 bg-gray-50">
+        <div className="mb-2 text-center font-bold">
+          가격: {formatPrice(kit.menu_price)}원
+        </div>
+        <div className="mb-2 text-center font-bold">
+          현재 수량: {kit.quantity}
         </div>
         {isAdmin && (
-          <div>
+          <>
             <input
               type="number"
               value={inputQuantity}
               onChange={handleQuantityChange}
+              min="0"
               className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <button
@@ -107,7 +124,7 @@ const KitItem: React.FC<KitItemProps> = ({ kit, onUpdate }) => {
             >
               {isUpdating ? "업데이트 중..." : "수량 업데이트"}
             </button>
-          </div>
+          </>
         )}
       </div>
     </div>
