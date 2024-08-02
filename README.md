@@ -65,15 +65,35 @@
 + 검색 후 리뷰, 별점순 정렬이 가능합니다.
 + 검색 후 검색결과를 누르면 매장 정보 화면으로 이동합니다. 
 
-![매장 검색   상세 정보 이동](https://github.com/user-attachments/assets/bd0e6a50-c6c7-4990-97ab-0b5aa393481d)
+![매장 검색   상세 정보 이동](https://github.com/user-attachments/assets/57f65ca0-d101-43d3-9043-93e23acac4d8)
+
+
+![로그아웃   로그인 버튼](https://github.com/user-attachments/assets/59797d8b-0ae7-41ae-8179-0c2c62ac9f28)
+![마이페이지](https://github.com/user-attachments/assets/eb3cd8f1-c326-44f4-bf4d-9ca43651a8e7)
+
+
+![회원 탈퇴 확인](https://github.com/user-attachments/assets/04672ebe-e77e-4678-a876-d6a04ec2372c)
+![지도 현재 위치](https://github.com/user-attachments/assets/230f3c0f-74ec-49f7-8c9b-3ce7f7259ba4)
+
+![로그인(홈이동)](https://github.com/user-attachments/assets/4fcaf3be-50b8-4ffd-a10a-3aa2e421b77b)
+![로그인](https://github.com/user-attachments/assets/d78b446b-e990-4045-a6ff-37069390a9b7)
+![회원가입(홈이동)](https://github.com/user-attachments/assets/34f369e3-2b9d-4b1a-ba3e-d9b3186aec6f)
+![회원가입](https://github.com/user-attachments/assets/72668012-15f1-47f9-a53a-3c1853b2ac2c)
+
+![찜](https://github.com/user-attachments/assets/f048e2bc-20c2-4864-850d-e8aad4c7fe0c)
+![메뉴 리스트](https://github.com/user-attachments/assets/2e111b81-e7db-4da0-9443-9652abcac214)
+![리뷰 삭제](https://github.com/user-attachments/assets/92920191-80aa-4950-9d3c-f2b0aca26cca)
+![리뷰 등록](https://github.com/user-attachments/assets/7c6b3f34-d418-4dae-8287-ef7614701e5c)
 
 
 
-
-
-
-
-
+![관리자 로그인](https://github.com/user-attachments/assets/253aca83-7f41-4235-bded-f4c7c0500596)
+![메뉴 등록 확인](https://github.com/user-attachments/assets/abe01374-acb9-44e4-a0f8-173d67668bc9)
+![메뉴 등록](https://github.com/user-attachments/assets/f0a11855-fdd7-4805-93d1-c8194f885045)
+![재고 수량 변경 확인](https://github.com/user-attachments/assets/fa04b900-7246-4f45-8498-95815f5a662a)
+![재고 수량 변경](https://github.com/user-attachments/assets/99a0a125-34eb-440c-9b49-b8d00a61c60f)
+![회원 삭제 확인](https://github.com/user-attachments/assets/4e87686a-9a5f-48f9-a345-384feee77f3e)
+![회원 삭제](https://github.com/user-attachments/assets/800e466f-76c7-4c84-a65e-1e1e4fbf490b)
 
 
   
