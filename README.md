@@ -63,20 +63,24 @@
 메인 페이지화면 
 + 서비스 접속 초기화면으로 검색창과 지도가 나타납니다.
 + 검색 후 리뷰, 별점순 정렬이 가능합니다.
-+ 검색 후 검색결과를 누르면 매장 정보 화면으로 이동합니다. 
++ 검색 후 검색결과를 누르면 매장 정보 화면으로 이동합니다.
 
 ![매장 검색   상세 정보 이동](https://github.com/user-attachments/assets/57f65ca0-d101-43d3-9043-93e23acac4d8)
 
-
++ 로그인후 마이페이지 버튼을 누르면 리뷰와 찜 기록이 나타납니다.
 ![로그아웃   로그인 버튼](https://github.com/user-attachments/assets/59797d8b-0ae7-41ae-8179-0c2c62ac9f28)
 ![마이페이지](https://github.com/user-attachments/assets/eb3cd8f1-c326-44f4-bf4d-9ca43651a8e7)
-
-
 ![회원 탈퇴 확인](https://github.com/user-attachments/assets/04672ebe-e77e-4678-a876-d6a04ec2372c)
+
+
++ 현재 위치 버튼을 누르게 되면 자신의 위치를 반영해 지도가 이동하며 마크를 표시해줍니다.
 ![지도 현재 위치](https://github.com/user-attachments/assets/230f3c0f-74ec-49f7-8c9b-3ce7f7259ba4)
+
+로그인/회원가입 페이지 화면
 
 ![로그인(홈이동)](https://github.com/user-attachments/assets/4fcaf3be-50b8-4ffd-a10a-3aa2e421b77b)
 ![로그인](https://github.com/user-attachments/assets/d78b446b-e990-4045-a6ff-37069390a9b7)
+
 ![회원가입(홈이동)](https://github.com/user-attachments/assets/34f369e3-2b9d-4b1a-ba3e-d9b3186aec6f)
 ![회원가입](https://github.com/user-attachments/assets/72668012-15f1-47f9-a53a-3c1853b2ac2c)
 
