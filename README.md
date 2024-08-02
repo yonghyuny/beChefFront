@@ -84,6 +84,8 @@
 ![회원가입(홈이동)](https://github.com/user-attachments/assets/34f369e3-2b9d-4b1a-ba3e-d9b3186aec6f)
 ![회원가입](https://github.com/user-attachments/assets/72668012-15f1-47f9-a53a-3c1853b2ac2c)
 
+
+매장 상세페이지
 ![찜](https://github.com/user-attachments/assets/f048e2bc-20c2-4864-850d-e8aad4c7fe0c)
 ![메뉴 리스트](https://github.com/user-attachments/assets/2e111b81-e7db-4da0-9443-9652abcac214)
 ![리뷰 삭제](https://github.com/user-attachments/assets/92920191-80aa-4950-9d3c-f2b0aca26cca)
