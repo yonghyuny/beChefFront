@@ -64,7 +64,7 @@
 초기 화면 
 + 서비스 접속 초기화면으로 검색창과 지도가 나타납니다.
 
-
+![매장 검색   상세 정보 이동](https://github.com/user-attachments/assets/bd0e6a50-c6c7-4990-97ab-0b5aa393481d)
 
 
 
