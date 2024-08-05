@@ -30,6 +30,7 @@ module.exports = {
       },
       height: {
         custom: "900px",
+        px20: "20px",
         px70: "70px",
         px85: "85px",
         px100: "100px",

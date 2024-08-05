@@ -60,7 +60,7 @@ const Search = ({ setResults, onMarkerHover }: SearchProps) => {
           handleKeyPress={handleKeyPress}
         />
         <SortBtn setSortOption={handleSort} />
-        <SearchResults results={results} onMarkerHover={onMarkerHover} />
+        <SearchResults results={results} onMarkerHover={onMarkerHover} ref={resultsContainerRef}  />
       </div>
     </div>
   );
