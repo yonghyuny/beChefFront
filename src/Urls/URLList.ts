@@ -39,9 +39,7 @@ export const INFO_REVIEW_INPUT = () => `${INFO_URL}/review_input`;
 export const INFO_REVIEW_DELETE = (review_id: number) =>
   `${INFO_URL}/review_delete/${review_id}`;
 export const INFO_REVIEW_UPDATE = (reviewId: number) =>
-  `${INFO_URL}/review_update/${reviewId}`;
-export const INFO_UPDATE_STORE_RATING = (store_id: number) =>
-  `${INFO_URL}/upate_store_rating/${store_id}`;
+  `${INFO_URL}/review_update/${reviewId}`; //오타
 export const INFO_AVERAGE_RATING = (store_id: number) =>
   `${INFO_URL}/average_rating/${store_id}`;
 

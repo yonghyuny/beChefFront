@@ -73,9 +73,7 @@ const MyMap = ({ results, onMarkerHover, hoveredMarker }: MyMapProps) => {
 
       // 마커 클릭 이벤트 설정
       kakao.maps.event.addListener(marker, "click", () => {
-        newMarkers.forEach(({ infowindow }) => {
-          if (infowindow) infowindow.close(); // 모든 인포윈도우 닫기
-        });
+        newMarkers.forEach(({ infowindow }) => infowindow.close()); // 모든 인포윈도우 닫기
         infowindow.open(map, marker); // 현재 마커의 인포윈도우 열기
       });
 
@@ -91,9 +89,7 @@ const MyMap = ({ results, onMarkerHover, hoveredMarker }: MyMapProps) => {
 
     // 맵 클릭 이벤트 설정
     kakao.maps.event.addListener(map, "click", () => {
-      newMarkers.forEach(({ infowindow }) => {
-        if (infowindow) infowindow.close(); // 모든 인포윈도우 닫기
-      });
+      newMarkers.forEach(({ infowindow }) => infowindow.close()); // 모든 인포윈도우 닫기
     });
   }, [results, map]);
 
@@ -104,15 +100,11 @@ const MyMap = ({ results, onMarkerHover, hoveredMarker }: MyMapProps) => {
         (markerObj) => markerObj.storeId === hoveredMarker
       );
       if (targetMarker) {
-        markers.forEach(({ infowindow }) => {
-          if (infowindow) infowindow.close(); // 모든 인포윈도우 닫기
-        });
+        markers.forEach(({ infowindow }) => infowindow.close()); // 모든 인포윈도우 닫기
         targetMarker.infowindow.open(map, targetMarker.marker); // 해당 마커의 인포윈도우 열기
       }
     } else {
-      markers.forEach(({ infowindow }) => {
-        if (infowindow) infowindow.close(); // 모든 인포윈도우 닫기
-      });
+      markers.forEach(({ infowindow }) => infowindow.close()); // 모든 인포윈도우 닫기
     }
   }, [hoveredMarker, markers, map]);
 
