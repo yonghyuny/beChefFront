@@ -158,7 +158,7 @@ const SignUpForm: React.FC = () => {
       }
     } catch (error) {
       console.error("요청 오류", error);
-      alert("ㅅㄱ");
+      alert("회원가입중 오류");
     }
   };
 
