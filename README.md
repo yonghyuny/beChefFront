@@ -77,7 +77,7 @@
 ---
 
 ### 데이터베이스 ERD
-
+![DB_ERD](https://github.com/user-attachments/assets/b1216291-db3a-453e-adb5-15d4e822e330)
 
 ### 프로젝트 페이지별 기능
 
