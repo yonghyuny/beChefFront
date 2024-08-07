@@ -22,31 +22,51 @@ const MyMap = ({ results, onMarkerHover, hoveredMarker }: MyMapProps) => {
   const [markers, setMarkers] = useState<
     { marker: any; infowindow: any; storeId: number }[]
   >([]); // 마커 객체 상태
+  const [currentLocationMarker, setCurrentLocationMarker] = useState<any>(null); // 현재 위치 마커 상태
 
   // 지도 초기화
   useEffect(() => {
-    const { kakao } = window as any; // 카카오 지도 API를 window 객체에서 가져옴
-    if (!kakao) return;
-
-    const container = mapRef.current; // 지도를 표시할 HTML 엘리먼트
-    const options = {
-      center: new kakao.maps.LatLng(37.489457, 126.7223953), // 지도 중심 좌표 설정
-      level: 5, // 지도 확대 레벨 설정
+    const loadKakaoMapScript = () => {
+      const script = document.createElement("script");
+      script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=YOUR_APP_KEY&libraries=services,clusterer,drawing`;
+      script.async = true;
+      script.onload = () => initMap();
+      document.head.appendChild(script);
     };
-    const mapInstance = new kakao.maps.Map(container, options); // 지도 생성
-    setMap(mapInstance); // 지도 객체 상태 설정
 
-    // 지도 확대/축소 컨트롤 추가
-    const zoomControl = new kakao.maps.ZoomControl();
-    mapInstance.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+    const initMap = () => {
+      const { kakao } = window as any;
+      if (!kakao) return;
+
+      const container = mapRef.current;
+      const options = {
+        center: new kakao.maps.LatLng(37.489457, 126.7223953),
+        level: 5,
+      };
+      const mapInstance = new kakao.maps.Map(container, options);
+      setMap(mapInstance);
+
+      const zoomControl = new kakao.maps.ZoomControl();
+      mapInstance.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+    };
+
+    if (!window.kakao) {
+      loadKakaoMapScript();
+    } else {
+      initMap();
+    }
   }, []);
 
   // 마커와 인포윈도우 설정 및 지도 이동
   useEffect(() => {
     if (!map) return;
 
-    // 기존 마커 제거
-    markers.forEach((markerObj) => markerObj.marker.setMap(null)); // 기존 마커를 지도에서 제거
+    // 기존 마커 제거 및 현재 위치 마커 제거
+    markers.forEach((markerObj) => markerObj.marker.setMap(null));
+    if (currentLocationMarker) {
+      currentLocationMarker.setMap(null);
+      setCurrentLocationMarker(null);
+    }
     setMarkers([]); // 마커 상태 초기화
 
     // 새로운 마커 추가 및 지도 중심 이동
@@ -112,22 +132,31 @@ const MyMap = ({ results, onMarkerHover, hoveredMarker }: MyMapProps) => {
   const handleCurrentLocation = () => {
     const { kakao } = window as any;
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        const { latitude, longitude } = position.coords;
-        const locPosition = new kakao.maps.LatLng(latitude, longitude); // 현재 위치로 이동
-        map.setCenter(locPosition);
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          const locPosition = new kakao.maps.LatLng(latitude, longitude);
+          map.setCenter(locPosition);
 
-        const marker = new kakao.maps.Marker({
-          position: locPosition,
-          map: map,
-        });
-        setMarkers((prevMarkers) => [
-          ...prevMarkers,
-          { marker, infowindow: null, storeId: -1 },
-        ]); // 새로운 마커 추가
-      });
+          // 기존 현재 위치 마커 제거
+          if (currentLocationMarker) {
+            currentLocationMarker.setMap(null);
+          }
+
+          // 새로운 현재 위치 마커 추가
+          const marker = new kakao.maps.Marker({
+            position: locPosition,
+            map: map,
+          });
+          setCurrentLocationMarker(marker); // 현재 위치 마커 상태 업데이트
+        },
+        (error) => {
+          console.error("Geolocation error:", error);
+          alert("현재 위치를 가져올 수 없습니다.");
+        }
+      );
     } else {
-      alert("현재 위치를 가져올 수 없습니다."); // 위치 정보를 가져올 수 없을 때 경고창 표시
+      alert("현재 위치를 가져올 수 없습니다.");
     }
   };
 
